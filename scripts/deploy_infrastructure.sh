@@ -63,13 +63,13 @@ kv_owner_object_id=$(az ad signed-in-user show --output json | jq -r '.objectId'
 
 # Validate arm template
 
-echo "Validating deployment"
-arm_output=$(az deployment group validate \
-    --resource-group "$resource_group_name" \
-    --template-file "./infrastructure/main.bicep" \
-    --parameters @"./infrastructure/main.parameters.${ENV_NAME}.json" \
-    --parameters project="${PROJECT}" keyvault_owner_object_id="${kv_owner_object_id}" deployment_id="${DEPLOYMENT_ID}" synapse_sqlpool_admin_password="${SYNAPSE_SQL_PASSWORD}" \
-    --output json)
+# echo "Validating deployment"
+# arm_output=$(az deployment group validate \
+#     --resource-group "$resource_group_name" \
+#     --template-file "./infrastructure/main.bicep" \
+#     --parameters @"./infrastructure/main.parameters.${ENV_NAME}.json" \
+#     --parameters project="${PROJECT}" keyvault_owner_object_id="${kv_owner_object_id}" deployment_id="${DEPLOYMENT_ID}" synapse_sqlpool_admin_password="${SYNAPSE_SQL_PASSWORD}" \
+#     --output json)
 
 # Deploy arm template
 echo "Deploying resources into $resource_group_name"
